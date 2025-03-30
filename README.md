@@ -60,7 +60,7 @@ To clone and run this project locally, ensure you have Git and Node.js installed
 
 ```bash
 # Clone this repository
-git clone https://github.com/5138prash/Myntra-Clone
+git clone https://github.com/5138prash/Myntra-Clone.git
 
 # Navigate into the repository
 cd Myntra-Clone
