@@ -82,5 +82,5 @@ Special thanks to the open-source community for providing useful libraries and f
 ## Contact
 If you have any questions or suggestions, feel free to reach out:
 
-✉️ [Email](mailto:your-email@example.com)  🌐 [GitHub](https://github.com/yourusername)  📸 [Instagram](https://instagram.com/yourprofile)
+✉️ [Email](prashanttripathi1310@gmail.com)  🌐 [GitHub](https://github.com/5138prash)  
 
