@@ -30,7 +30,7 @@ const Signup = () => {
     localStorage.setItem("users", JSON.stringify(existingUsers));
   
     toast.success("Signup Successful!");
-    setTimeout(() => navigate("/login"), 2000); // Delay navigation so toast is visible
+   
   };
   
 
@@ -80,7 +80,9 @@ const Signup = () => {
 
               <div className="w-full flex justify-center py-4">
                 <button
-                  onClick={()=> handleSignup()}
+                  onClick={()=> {
+                    handleSignup()
+                  }}
                   type="submit"
                   className="bg-[#ff3e6c] hover:bg-pink-600 cursor-pointer text-white px-5 py-2 text-[18px] rounded w-full"
                 >
@@ -91,7 +93,9 @@ const Signup = () => {
               <div className="text-[12px] text-center mt-2">
                 <p>
                   Have an account?
-                  <span onClick={()=> navigate('/login')} className="cursor-pointer text-[#ff3e6c] font-bold">
+                  <span onClick={()=> {
+                    navigate('/login')
+                  }} className="cursor-pointer text-[#ff3e6c] font-bold">
                     Log in
                   </span>
                 </p>
