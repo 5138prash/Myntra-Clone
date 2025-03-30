@@ -95,7 +95,7 @@ const Signup = () => {
                 <p>
                   Have an account?
                   <span onClick={()=> {
-                    navigate('/login')
+                    navigate('/')
                   }} className="cursor-pointer text-[#ff3e6c] font-bold">
                     Log in
                   </span>
