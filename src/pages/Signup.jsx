@@ -16,12 +16,12 @@ const Signup = () => {
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
   
     if (existingUsers.some(user => user.email === email)) {
-      toast.error("User already exists! Please login.");
+      alert("User already exists! Please login.");
       return;
     }
   
     if (password !== confirmPassword) {
-      toast.error("Passwords should be the same.");
+      alert("Passwords should be the same.");
       return;
     }
   
@@ -82,6 +82,7 @@ const Signup = () => {
                 <button
                   onClick={()=> {
                     handleSignup()
+                    navigate('/login')
                   }}
                   type="submit"
                   className="bg-[#ff3e6c] hover:bg-pink-600 cursor-pointer text-white px-5 py-2 text-[18px] rounded w-full"
