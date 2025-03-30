@@ -11,29 +11,28 @@ const Signup = () => {
   const navigate = useNavigate()
 
 
-  const handleSignup = () => {
-  const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
- 
-  if (existingUsers.some(user => user.email === email)) {
-    toast.error("User already exists! Please login.");
-    return;
-  }
-
-  if (password !== confirmPassword) {
-    toast.error("Passwords should be the same.");
-    return;
-  }
-
+  const handleSignup = (e) => {
+    e.preventDefault(); // Prevent form refresh
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
   
-
-  const newUser = { email, name, password };
-  existingUsers.push(newUser); // Add new user
-
-  localStorage.setItem("users", JSON.stringify(existingUsers)); // Save updated list
-
-  toast.success("Signup Successful!");
-  navigate("/login");
-};
+    if (existingUsers.some(user => user.email === email)) {
+      toast.error("User already exists! Please login.");
+      return;
+    }
+  
+    if (password !== confirmPassword) {
+      toast.error("Passwords should be the same.");
+      return;
+    }
+  
+    const newUser = { email, name, password };
+    existingUsers.push(newUser);
+    localStorage.setItem("users", JSON.stringify(existingUsers));
+  
+    toast.success("Signup Successful!");
+    setTimeout(() => navigate("/login"), 2000); // Delay navigation so toast is visible
+  };
+  
 
   
     

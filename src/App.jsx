@@ -8,12 +8,16 @@ import Bag from './pages/Bag'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Orders from './pages/Orders'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const App = () => {
 
   const [searchQuery, setSearchQuery]=useState("")
   return (
     <BrowserRouter>
+    <ToastContainer/>
     <Navbar setSearchQuery={setSearchQuery}/>
       <Routes>
         <Route path='/' element= {<Home/>} />
