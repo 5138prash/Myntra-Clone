@@ -1,5 +1,5 @@
 import React from "react";
-import Data from "../../Data/Carousel_Data";
+import Data from "../../data/Carousel_Data"
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";

@@ -1,8 +1,8 @@
 import React from "react";
-import Carousel from "../components/carousel/carousel";
-import Favourite_Brands from "../Data/Favourite_Brands";
-import ShopByCategory from "../Data/ShopByCategory";
-import Grand_Global_Brands from "../Data/Grand_Global_Brands";
+import Carousel from "../components/carousel/Carousel";
+import Favourite_Brands from "../data/Favourite_Brands";
+import ShopByCategory from "../data/ShopByCategory";
+import Grand_Global_Brands from "../data/Grand_Global_Brands";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
