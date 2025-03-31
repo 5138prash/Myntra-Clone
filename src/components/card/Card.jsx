@@ -106,8 +106,7 @@ const Card = ({data}) => {
 
       {/* Heart Icon - Initially Hidden */}
       <i
-     onClick={()=>{ handleWishlist() 
-     toast.success("Added to wishlist")}}
+     onClick={()=>{ handleWishlist() }}
       className={`${data.wishList === true ? 'fa-solid fa-heart text-[#ff3e6c]' : 'fa-regular fa-heart text-[gray]  opacity-0 group-hover:opacity-100 transition-opacity duration-300'}  absolute top-5 right-5 text-[20px]`}></i>
       </div>
 
