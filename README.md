@@ -24,7 +24,7 @@ This project aims to provide an interactive and seamless shopping experience, si
 ---
 
 ## Features
-- **User Authentication**: Signup and Login functionality with local storage.
+- **User Authentication**: Signup and Login functionality using Firebase Authentication and local
 - **Product Search & Filters**: Search products using the search bar and filter them by price (low to high, high to low).
 - **Wishlist**: Users can add products to their wishlist and view them on a dedicated page.
 - **Cart System**: Add products to the cart and view them before proceeding to checkout.
@@ -65,8 +65,20 @@ cd myntra-clone
 # Install dependencies
 npm install
 
+
+# Create a .env.local file and add your Firebase keys
+# Example of .env.local file
+REACT_APP_FIREBASE_API_KEY=your-api-key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
+REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your-storage-bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
+REACT_APP_FIREBASE_APP_ID=your-app-id
+
 # Start the development server
 npm run dev
+
+
 ```
 
 ---
