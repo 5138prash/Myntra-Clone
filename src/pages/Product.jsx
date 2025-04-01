@@ -33,7 +33,7 @@ const Product = ({ searchQuery }) => {
       <div className="w-full h-full flex">
         <div className="w-full product-body px-10 py-10 flex flex-wrap gap-5 justify-between">
           {filteredProducts.map((data) => (
-            <Card data={data} key={data.id || data.index} />  {/* Using 'id' for key if available */}
+            <Card data={data} key={data.id || data.index} /> 
           ))}
         </div>
       </div>

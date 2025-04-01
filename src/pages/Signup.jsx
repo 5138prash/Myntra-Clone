@@ -1,41 +1,47 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { useDispatch } from "react-redux";
+
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSignup = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-
-    if (existingUsers.some((user) => user.email === email)) {
-      toast.error("User already exists! Please login.");
-      return;
+  const handleSignup = async () => {
+    try {
+      const userRef = await addDoc(collection(db, "users"), formData);
+      toast.success("Signup success");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error adding user info", error);
+      toast.error("Signup failed");
     }
+  };
+  
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords should be the same.");
-      return;
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-    const newUser = { email, name, password };
-    existingUsers.push(newUser); // Add new user
-
-    localStorage.setItem("users", JSON.stringify(existingUsers)); // Save updated list
-
-    toast.success("Signup Successful!");
-    navigate("/login");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSignup();
+  
   };
 
   return (
     <section>
-      <form onSubmit={handleSignup}>
+      <form onSubmit={handleSubmit}>
         <div className="bg-[#ff3e6c]/10 w-full h-[907px] mt-[84px] flex justify-center pt-8">
           <div className="w-[400px] h-full bg-white">
             <img
@@ -43,35 +49,36 @@ const Signup = () => {
               alt=""
             />
             <div className="flex flex-col pt-10 px-10">
-              <label className="font-bold text-[20px] text-gray-600 mb-2">Signup</label>
+              <label className="font-bold text-[20px] text-gray-600 mb-2">
+                Signup
+              </label>
               <div className="flex flex-col gap-4 w-full text-[13px]">
                 <input
-                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
-                  placeholder="pashant@example.com"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required={true}
+                  placeholder="parshant@example.com"
                   className="bg-gray-200/40 rounded p-2 outline-[#ff3e6c]"
-                  required
                 />
                 <input
-                  onChange={(e) => setName(e.target.value)}
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required={true}
                   placeholder="Prashant Tripathi"
                   className="bg-gray-200/40 rounded p-2 outline-[#ff3e6c]"
-                  required
                 />
                 <input
-                  onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   placeholder="Password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required={true}
                   className="bg-gray-200/40 rounded p-2 outline-[#ff3e6c]"
-                  required
-                />
-                <input
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  type="password"
-                  placeholder="Confirm-Password"
-                  className="bg-gray-200/40 rounded p-2 outline-[#ff3e6c]"
-                  required
                 />
               </div>
               <div className="w-full flex justify-center py-4">
