@@ -6,36 +6,43 @@ import { setCart, setOrders } from "../../redux/slice/productSlice";
 import { toast } from "react-toastify";
 
 const AddToCart = () => {
+  // Fetch the cart items from Redux store
   const carts = useSelector((state) => state.product.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Function to calculate total MRP of all items in cart
   let getTotalMrp = (list) => {
     return list.reduce((a, b) => a + parseInt(b.MRP) * b.qty, 0);
   };
 
+  // Function to calculate total price after discount
   let getTotalPrice = (list) => {
     return list.reduce((a, b) => a + parseInt(b.price) * b.qty, 0);
   };
 
+  // Function to calculate total discount applied
   let getTotalDiscount = (list) => {
     return getTotalMrp(list) - getTotalPrice(list);
   };
 
+  // Function to handle removing all items from cart and placing order
   let HandleRemoveItem = () => {
-    dispatch(setOrders(carts));
-    dispatch(setCart([]));
+    dispatch(setOrders(carts)); // Move cart items to orders
+    dispatch(setCart([])); // Clear the cart
   };
 
   return (
     <div className="main-addtocart">
       <div className="flex bag-addtocart gap-6 py-3">
-        <div className="addToCart-items  lg:max-h-[700px] overflow-hidden overflow-y-scroll">
+        {/* Cart Items Section */}
+        <div className="addToCart-items lg:max-h-[700px] overflow-hidden overflow-y-scroll">
           {carts.map((data, index) => (
             <Cart key={index} data={data} />
           ))}
         </div>
 
+        {/* Price Details Section */}
         {carts.length > 0 ? (
           <div className="price-list-section w-[300px] h-[700px] shadow-[-1px_0px_5px_rgba(0,0,0,0.05)] text-gray-600 ">
             <div className="price-detail-header px-5 py-2">
@@ -44,6 +51,7 @@ const AddToCart = () => {
               </h1>
             </div>
 
+            {/* Price Breakdown */}
             <div className="price-detail-amount py-3">
               <div className="w-full flex justify-between px-5 text-[15px] py-[2px]">
                 <span className="mrp">Total MRP</span>
@@ -67,6 +75,7 @@ const AddToCart = () => {
               </div>
             </div>
 
+            {/* Total Amount and Place Order Button */}
             <div className="w-full all-credits px-5">
               <div className="border-t-1 border-gray-200">
                 <div className="w-full flex justify-between text-[15px] py-2 font-bold">
